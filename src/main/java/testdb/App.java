@@ -13,8 +13,9 @@ public class App
 
         showInvoices();
         Date datum = new Date(System.currentTimeMillis());
-        //insertInvoice( datum,  "description",  1234, true);
-        updateInvoice( 2, datum,  "description",  5000, true);
+        insertInvoice( datum,  "spasxtasdfasdfhjjamslköd,hfm,asdfhm,.asdhf,asdmrfhf",  1234, 1);
+        updateInvoice( 5, datum,  "description",  5000, 0);
+        deleteInvoice(5);
 
        /* try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -48,7 +49,7 @@ public class App
             }catch(Exception e){ System.out.println(e);}
     }
 
-    public static void insertInvoice(Date date, String description, double value, Boolean paid){
+    public static void insertInvoice(Date date, String description, double value, int paid){
         conDatabase();
         try{
             Statement state = con.createStatement();
@@ -64,13 +65,13 @@ public class App
 
         System.out.println("Insert complete.");
     }
-    public static void updateInvoice(int id, Date date, String description, double value, Boolean paid){
+    public static void updateInvoice(int id, Date date, String description, double value, int paid){
         conDatabase();
         try{
             Statement state = con.createStatement();
             String sql = "update invoice"
-                    + " set date = this.date "
-                    + "where id = this.id";
+                    + " set description = '"+description +"'"
+                    + "where id = '"+id +"'";
             state.executeUpdate(sql);
         } catch (Exception e)
         {
@@ -83,8 +84,8 @@ public class App
         conDatabase();
         try{
             Statement state = con.createStatement();
-            String sql = "delete * from invoice"
-                    + "where id = this.id";
+            String sql = "delete from invoice"
+                    + " where id = '"+id +"'";
             state.executeUpdate(sql);
         } catch (Exception e)
         {
@@ -93,6 +94,6 @@ public class App
 
         System.out.println("Delete complete.");
     }
-    
+
 
 }
