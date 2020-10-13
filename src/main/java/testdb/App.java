@@ -46,7 +46,6 @@ public class App
                     System.out.println(rs.getInt(1)+"  "+rs.getString(3));
                 con.close();
             }catch(Exception e){ System.out.println(e);}
-
     }
 
     /*public static void insertInvoice(Date date, String description, double value, Boolean paid){
